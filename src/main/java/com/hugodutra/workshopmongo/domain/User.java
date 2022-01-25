@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -19,7 +20,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @Document
 public class User {
-    @MongoId(FieldType.STRING)
+    @Id
     private String id;
     @EqualsAndHashCode.Exclude
     private String name;

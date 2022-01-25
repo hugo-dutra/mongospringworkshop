@@ -31,6 +31,12 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> findById(@PathVariable String id){
+        User user = userService.findById(id);
+        return ResponseEntity.ok(new UserDTO(user));
+    }
+
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user){
         return ResponseEntity.ok(userService.save(user));
