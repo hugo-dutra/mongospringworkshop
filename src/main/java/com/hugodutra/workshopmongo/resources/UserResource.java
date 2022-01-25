@@ -45,6 +45,13 @@ public class UserResource {
         return userService.save(user);
     }
 
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody UserDTO usr){
+        User user = userService.fromDTO(usr);
+        return userService.update(user);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String id){

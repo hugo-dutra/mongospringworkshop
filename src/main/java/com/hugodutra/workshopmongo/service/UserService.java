@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,16 @@ public class UserService {
     public User save(User user){
         return userRepository.save(user);
     }
+
+    public User update(User user){
+        Optional<User> usr = userRepository.findById(user.getId());
+        if(usr.isPresent()){
+            return userRepository.save(user);
+        }
+        throw new ObjectNotFoundException("Usuário não encontrado");
+    }
+
+
 
     public List<User> findAll(){
         return userRepository.findAll();
