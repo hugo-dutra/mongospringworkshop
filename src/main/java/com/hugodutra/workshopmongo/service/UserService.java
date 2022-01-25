@@ -20,4 +20,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public void deleteAll (){
+        userRepository.deleteAll();
+    }
+
+    public void saveAll (Iterable users){
+        userRepository.saveAll(users);
+    }
+
 }
