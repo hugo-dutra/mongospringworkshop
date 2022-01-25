@@ -5,6 +5,7 @@ import com.hugodutra.workshopmongo.dto.UserDTO;
 import com.hugodutra.workshopmongo.service.UserService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,9 @@ public class UserResource {
     }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody User user){
-        return ResponseEntity.ok(userService.save(user));
+    @ResponseStatus(HttpStatus.CREATED)
+    public User save(@RequestBody UserDTO usr){
+        User user = userService.fromDTO(usr);
+        return userService.save(user);
     }
 }

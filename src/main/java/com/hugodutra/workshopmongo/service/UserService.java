@@ -1,6 +1,7 @@
 package com.hugodutra.workshopmongo.service;
 
 import com.hugodutra.workshopmongo.domain.User;
+import com.hugodutra.workshopmongo.dto.UserDTO;
 import com.hugodutra.workshopmongo.exception.ObjectNotFoundException;
 import com.hugodutra.workshopmongo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,10 @@ public class UserService {
 
     public void saveAll (Iterable users){
         userRepository.saveAll(users);
+    }
+
+    public User fromDTO(UserDTO user){
+        return new User(user.getId(),user.getName(),user.getEmail());
     }
 
 }
