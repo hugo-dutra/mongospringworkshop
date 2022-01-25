@@ -40,4 +40,11 @@ public class UserService {
         return new User(user.getId(),user.getName(),user.getEmail());
     }
 
+    public void deleteById(String id){
+        User user = userRepository
+                .findById(id)
+                .orElseThrow(()->new ObjectNotFoundException("Objeto não encontrado"));
+        userRepository.deleteById(id);
+    }
+
 }

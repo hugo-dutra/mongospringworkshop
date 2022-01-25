@@ -44,4 +44,10 @@ public class UserResource {
         User user = userService.fromDTO(usr);
         return userService.save(user);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String id){
+        userService.deleteById(id);
+    }
 }
